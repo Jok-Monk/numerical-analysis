@@ -73,9 +73,12 @@
 #endif
 
 // ================== 错误码定义 ==================
-#define SUCCESS           0
-#define ERROR_INVALID_ARG 1
-#define ERROR_NUMERICAL   2
-#define ERROR_MEMORY      3
+#define YES               1
+#define NO                0
+#define SUCCESS           2
+#define FAILURE           3
+#define ERROR_INVALID_ARG 4
+#define ERROR_NUMERICAL   5
+#define ERROR_MEMORY      6
 
 #endif // NUM_DEBUG_H
