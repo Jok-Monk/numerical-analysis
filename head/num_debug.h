@@ -8,13 +8,20 @@
 // ================== 调试系统配置 ==================
 #define DEBUG_LEVEL 3  // 0=关闭, 1=基础, 2=详细, 3=全量
 #define FLOAT_TOLERANCE 1e-12  // 浮点比较容差
+#define USER_MODE 0  // 0=开发者模式, 1=用户模式
 
 // ================== 核心调试宏 ==================
 #if DEBUG_LEVEL > 0
-// 基础调试输出（自动捕获位置信息）
+#if USER_MODE == 0
+// 开发者模式调试输出（自动捕获位置信息）
 #define LOG(fmt, ...) \
     fprintf(stderr, "[NUM] %s:%d (%s) | " fmt, \
             __FILE__, __LINE__, __func__, ##__VA_ARGS__)
+#else
+// 用户模式调试输出（仅显示错误信息）
+#define LOG(fmt, ...) \
+    fprintf(stderr, "[NUM] " fmt, ##__VA_ARGS__)
+#endif
 
 // 自动变量追踪（自动显示变量名和值）
 #define TRACE(var, fmt) \
@@ -73,12 +80,10 @@
 #endif
 
 // ================== 错误码定义 ==================
-#define YES               1
-#define NO                0
-#define SUCCESS           2
-#define FAILURE           3
-#define ERROR_INVALID_ARG 4
-#define ERROR_NUMERICAL   5
-#define ERROR_MEMORY      6
+#define SUCCESS           1
+#define FAILURE           0
+#define ERROR_INVALID_ARG -1
+#define ERROR_NUMERICAL   -2
+#define ERROR_MEMORY      -3
 
 #endif // NUM_DEBUG_H
