@@ -1,10 +1,14 @@
 /*一般高斯消去法 同时存储LU矩阵*/
-#ifndef GAUSS_H
-#define GAUSS_H
+#ifndef GAUSS_LU_H
+#define GAUSS_LU_H
 #include <stdio.h>
 #include <math.h>
 #define EPSILON 1e-10
-//#define N 3
+
+#define GAUSS_LU_DE_BUG 0    // 1 调试该文件 0 取消调试
+#if GAUSS_LU_DE_BUG 
+#define N 3
+#endif
 int gauss(double *mat, double *b, int n); // mat[n][n],b[n],将增广矩阵(mat,b)化为上三角矩阵 左下角为LU分解的L矩阵
 
 int gauss(double *mat, double *b, int n) // mat[n][n],b[n],将增广矩阵(mat,b)化为上三角矩阵
@@ -30,7 +34,8 @@ int gauss(double *mat, double *b, int n) // mat[n][n],b[n],将增广矩阵(mat,b
     return 1;
 }
 /*测试*/
-/* int main()
+#if GAUSS_LU_DE_BUG
+int main()
 {
     double A[N * N] = {1, 1, -1, 2, -1, 3, -1, -2, 1}; // 3*3矩阵测试样例
     double b[N] = {3, 0, -5};                          // 3*1矩阵测试样例
@@ -50,5 +55,6 @@ int gauss(double *mat, double *b, int n) // mat[n][n],b[n],将增广矩阵(mat,b
         printf("ERROR");
     }
     return 0;
-} */
+} 
+#endif
 #endif

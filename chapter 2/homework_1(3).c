@@ -4,8 +4,9 @@
 // 2  1 -1 = -3
 #include<stdio.h>
 #include<math.h>
-#include"gauss.h"
-#include"upper triangle linear system.h"
+#include"gauss_LU.h"
+#include"solve_upper_triangle.h"
+#include"mat_option.h"
 #define n 3
 int main() 
 {
@@ -14,16 +15,13 @@ int main()
     double b[n]={-3,-4,-3};
     if(gauss(A,b,n))
     {
-        if(upper_triangle_linear_system(A,x,b,n))
+        if(solve_upper_triangle(A,b,n))
         {
-            for (int i = 0; i < n; i++)
-            {
-                printf("%lf ",x[i]);
-            }
+            mat_print(x,n,1);
         }
         else
         {
-            printf("ERROR: upper_triangle_linear_system");
+            printf("ERROR: solve_upper_triangle");
         }
     }
     else
