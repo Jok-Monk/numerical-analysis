@@ -45,6 +45,7 @@ int gaussColumnPivot(double *mat, double *b, int n)
         if (fabs(mat[i * n + i]) < EPSILON) // 判断是否为奇异矩阵
         {
             printf("The matrix is singular\n");
+            //printf("mat:%d %d",i,i);
             return 0;
         }
         b[i] /= mat[i * n + i];
