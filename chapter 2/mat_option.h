@@ -6,6 +6,9 @@
 #if MAT_OPTION_DE_BUG 
 #define 
 #endif
+
+#define EPSILON 1e-10 // 定义误差范围
+
 /*声明*/
 void mat_print(double *mat ,int rows, int cols); // 打印矩阵
 // 交换rows*cols矩阵mat的row_1,row_2行

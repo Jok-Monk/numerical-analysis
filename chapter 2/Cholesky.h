@@ -6,7 +6,7 @@
 #include <math.h>
 #include "mat_option.h"
 
-#define EPSILON 1e-10
+
 
 #define CHOLESKY_DE_BUG 0    // 1 调试该文件 0 取消调试
 #if CHOLESKY_DE_BUG 

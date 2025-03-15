@@ -8,7 +8,7 @@
 #if GAUSSCOLUMNPIVOT_DE_BUG 
 #define N 2
 #endif
-#define EPSILON 1e-10
+
 // 输入n*n矩阵mat和n*1右端向量b，并将结果储存在b中
 int gaussColumnPivot(double *mat, double *b, int n);
 

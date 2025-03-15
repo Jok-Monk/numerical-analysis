@@ -29,28 +29,28 @@
 #include <stdio.h>
 #include <math.h>
 #include "mat_option.h"
-#define EPSILON 1e-10
 
-#define SOLVELOWERTRIANGULAR_DE_BUG 0 // 1 调试该文件 0 取消调试
-#if SOLVELOWERTRIANGULAR_DE_BUG
+
+#define THOMAS_DE_BUG 0 // 1 调试该文件 0 取消调试
+#if THOMAS_DE_BUG
 #define N 4
 #endif
 
 // f:(n-1)*1 e:n*1 d:(n-1)*1 b:n*1 choose=1则解方程,choose=0则仅作LU分解(不改变b)
-int solveLowerTriangular(double *upl, double *ml, double *lowl, double *b, int n, int choose);
+int Thomas(double *upl, double *ml, double *lowl, double *b, int n, int choose);
 
-int solveLowerTriangular(double *f, double *e, double *d, double *b, int n,int choose)
+int Thomas(double *upl, double *ml, double *lowl, double *b, int n,int choose)
 {
     // LU分解(Doolittle算法)
     for (int i = 0; i < n - 1; i++)
     {
-        if (fabs(e[i]) < EPSILON)
+        if (fabs(ml[i]) < EPSILON)
         {
             printf("ERROR\n");
             return 0;
         }
-        d[i] /= e[i];
-        e[i + 1] -= d[i] * f[i];
+        lowl[i] /= ml[i];
+        ml[i + 1] -= lowl[i] * upl[i];
     }
     if (choose==0)
     {
@@ -60,37 +60,37 @@ int solveLowerTriangular(double *f, double *e, double *d, double *b, int n,int c
     // Ly=b , 结果y储存在b中
     for (int i = 1; i < n; i++)
     {
-        b[i] -= d[i - 1] * b[i - 1];
+        b[i] -= lowl[i - 1] * b[i - 1];
     }
     // Ux=y , 结果x储存在b中
-    if (fabs(e[n - 1]) < EPSILON)
+    if (fabs(ml[n - 1]) < EPSILON)
     {
         printf("ERROR\n");
         return 0;
     }
-    b[n-1]/=e[n-1];
+    b[n-1]/=ml[n-1];
     for (int i = n - 2; i >= 0; i--)
     {
-        if (fabs(e[i]) < EPSILON)
+        if (fabs(ml[i]) < EPSILON)
         {
             printf("ERROR\n");
             return 0;
         }
-        b[i]-=f[i]*b[i+1];
-        b[i]/=e[i];
+        b[i]-=upl[i]*b[i+1];
+        b[i]/=ml[i];
     }
     return 1;
 }
 
 /*测试样例*/
-#if SOLVELOWERTRIANGULAR_DE_BUG
+#if THOMAS_DE_BUG
 int main() 
 {
     double f[N-1]={-1,-1,-1};
     double e[N]={2,2,2,2};
     double d[N-1]={-1,-1,-1};
     double b[N]={0,0,0,5};
-    solveLowerTriangular(f,e,d,b,N,1);
+    Thomas(f,e,d,b,N,1);
     /* for (int i = 0; i < N-1; i++)
     {
         printf("f[%d]:%f\n",i,f[i]);

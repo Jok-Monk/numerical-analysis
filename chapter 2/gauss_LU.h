@@ -3,7 +3,8 @@
 #define GAUSS_LU_H
 #include <stdio.h>
 #include <math.h>
-#define EPSILON 1e-10
+#include"mat_option.h"
+
 
 #define GAUSS_LU_DE_BUG 0    // 1 调试该文件 0 取消调试
 #if GAUSS_LU_DE_BUG 
