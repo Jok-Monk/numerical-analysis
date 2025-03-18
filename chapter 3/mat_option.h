@@ -7,7 +7,7 @@
 #define 
 #endif
 
-#define EPSILON 1e-60 // 定义误差范围
+#define EPSILON 1e-10 // 定义误差范围
 
 /*声明*/
 void mat_print(double *mat ,int rows, int cols); // 打印矩阵

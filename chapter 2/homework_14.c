@@ -23,7 +23,7 @@
 #include "gauss_LU.h"
 #include "gaussColumnPivot.h"
 
-#define n 60    // 代求方程组阶数
+#define n 100    // 代求方程组阶数
 #define choice 0 // 1 为Gauss消元法 , 0 为列主元消去法
 int main()
 {
