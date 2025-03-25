@@ -42,7 +42,7 @@ int chooseColumnPivot(double *mat, int rows, int cols, int startRow, int startCo
     return maxRow;
 }
 
-void mat_print(double *mat ,int rows, int cols)
+void vmat_print(double *mat ,int rows, int cols)
 {
 for (int i = 0; i < rows; i++)
 { 
