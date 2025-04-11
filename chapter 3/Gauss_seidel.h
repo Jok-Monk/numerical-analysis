@@ -16,7 +16,7 @@ int Gauss_seidel(double *mat, double *b, double *x, int n, int maxtime, double E
     int cnt = 0;     // 循环计数
     double err = 10; // 记录误差
     double tmp;      // 记录迭代值
-    while ((err >= ERR) && (cnt <= maxtime))
+    while ((err >= ERR) && (cnt <= maxtime) && (!isinf(err)))
     {
         // 判断迭代是否可以进行
         for (int i = 0; i < n; i++)
@@ -42,12 +42,13 @@ int Gauss_seidel(double *mat, double *b, double *x, int n, int maxtime, double E
             tmp /= mat[i * n + i];
 
             // 计算误差
-            err = _max(err, fabs(tmp - x[i])/(fabs(tmp)+1.0));
+            //err = _max(err, fabs(tmp - x[i])/(fabs(tmp)+1.0));//计算相对误差
+            err = _max(err, fabs(tmp - x[i]));//计算绝对误差
             x[i] = tmp; // 更新x[i]
         }
         cnt++; // 更新迭代次数
     }
-    if (cnt > maxtime)
+    if (cnt > maxtime || isinf(err))
     {
         printf("Fail.");
         return 0;
