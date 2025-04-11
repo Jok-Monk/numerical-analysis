@@ -1,23 +1,27 @@
 #ifndef MAT_OPTION_H
 #define MAT_OPTION_H
-#include<stdio.h>
+#include <stdio.h>
+#include <math.h>
 
-#define MAT_OPTION_DE_BUG 0    // 1 调试该文件 0 取消调试
-#if MAT_OPTION_DE_BUG 
-#define 
+#define MAT_OPTION_DE_BUG 0 // 1 调试该文件 0 取消调试
+#if MAT_OPTION_DE_BUG
+#define
 #endif
 
 #define EPSILON 1e-10 // 定义误差范围
 
 /*声明*/
-void mat_print(double *mat ,int rows, int cols); // 打印矩阵
+ // 打印矩阵mat,行数rows,列数cols
+void mat_print(double *mat, int rows, int cols);
 // 交换rows*cols矩阵mat的row_1,row_2行
-void swapRows(double *mat, int rows, int cols, int row_1, int row_2); 
+void swapRows(double *mat, int rows, int cols, int row_1, int row_2);
 // 选rows*cols矩阵mat第startCol列自第startRow行起的主元,返回主元所在行号
-int chooseColumnPivot(double *mat, int rows, int cols, int startRow, int startCol); 
+int chooseColumnPivot(double *mat, int rows, int cols, int startRow, int startCol);
+// 返回最大值
+double _max(double a, double b);
 
 /*定义*/
-void swapRows(double *mat, int rows, int cols, int row_1, int row_2) 
+void swapRows(double *mat, int rows, int cols, int row_1, int row_2)
 {
     for (int i = 0; i < cols; i++)
     {
@@ -27,7 +31,7 @@ void swapRows(double *mat, int rows, int cols, int row_1, int row_2)
     }
 }
 
-int chooseColumnPivot(double *mat, int rows, int cols, int startRow, int startCol) 
+int chooseColumnPivot(double *mat, int rows, int cols, int startRow, int startCol)
 {
     double max = fabs(mat[startRow * cols + startCol]);
     int maxRow = startRow;
@@ -42,24 +46,27 @@ int chooseColumnPivot(double *mat, int rows, int cols, int startRow, int startCo
     return maxRow;
 }
 
-void vmat_print(double *mat ,int rows, int cols)
+void mat_print(double *mat, int rows, int cols)
 {
-for (int i = 0; i < rows; i++)
-{ 
-    for (int j = 0; j < cols; j++)
+    for (int i = 0; i < rows; i++)
     {
-        printf("%10.6lf ", mat[i * cols + j]);
+        for (int j = 0; j < cols; j++)
+        {
+            printf("%10.6lf ", mat[i * cols + j]);
+        }
+        printf("\n");
     }
-    printf("\n");
-                
-}
 }
 
-/*测试样例*/
-#if MAT_OPTION_DE_BUG 
-int main() 
+double _max(double a, double b)
 {
-    
+    return ((a>b) ? a:b);
+}
+/*测试样例*/
+#if MAT_OPTION_DE_BUG
+    int main()
+{
+
     return 0;
 }
 #endif

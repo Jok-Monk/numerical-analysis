@@ -9,7 +9,7 @@
 #pragma once
 #endif
 
-// 解方程mat*x=b , n为矩阵维数 , 输入x为迭代初始向量 , maxtimes为最大迭代次数 , 最后结果存储于x中
+// 解方程mat*x=b , n为矩阵维数 , 输入x为迭代初始向量 , maxtime为最大迭代次数 , 最后结果存储于x中
 int Jacobi(double *mat, double *b, double *x, int n, int maxtime);
 
 int Jacobi(double *mat, double *b, double *x, int n, int maxtime)
