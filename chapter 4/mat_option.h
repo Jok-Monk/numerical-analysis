@@ -69,12 +69,12 @@ double _max(double a, double b)
 
 int mat_mult(double *mat1, int cols1, int start_rows1, int end_rows1, int start_cols1, int end_cols1, double *mat2, int cols2, int start_rows2, int end_rows2, int start_cols2, int end_cols2, double *mat3, int cols3, int start_rows3, int end_rows3, int start_cols3, int end_cols3)
 {
-    int lenrows1 = end_rows1 - start_rows1;
-    int lencols1 = end_cols1 - start_cols1;
-    int lenrows2 = end_rows2 - start_rows2;
-    int lencols2 = end_cols2 - start_cols2;
-    int lenrows3 = end_rows3 - start_rows3;
-    int lencols3 = end_cols3 - start_cols3;
+    int lenrows1 = end_rows1 - start_rows1 + 1;
+    int lencols1 = end_cols1 - start_cols1 + 1;
+    int lenrows2 = end_rows2 - start_rows2 + 1;
+    int lencols2 = end_cols2 - start_cols2 + 1;
+    int lenrows3 = end_rows3 - start_rows3 + 1;
+    int lencols3 = end_cols3 - start_cols3 + 1;
     if (lenrows1 != lenrows3 || lencols1 != lenrows2 || lencols2 != lencols3)
     {
         printf("Error: Matrix multiplication not possible.\n");

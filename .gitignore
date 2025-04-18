@@ -8,3 +8,7 @@ Pgauss.c
 Pgauss.exe
 chapter 3/TEST.exe
 chapter 3/Gauss_seidel_test.exe
+.vscode/settings.json
+chapter 4/normal_equations_for_least_squares.exe
+chapter 4/QR_Householder.exe
+chapter 4/Householder.exe
