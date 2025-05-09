@@ -15,3 +15,17 @@ chapter 4/Householder.exe
 chapter 5/Eigenvalues_power_iteration.exe
 chapter 5/1032_乘幂法.c
 chapter 4/LeastSquare_given.exe
+test.exe
+test.c
+test_1.c
+.gitignore
+test_2.exe
+test_2.c
+a2b2.c
+test_4.c
+test_4.exe
+test_jianmo_shengshibi.c
+test_jianmo_shengshibi.exe
+test_jianmo.c
+test_jianmo.exe
+chapter 5/IPower.exe
